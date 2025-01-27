@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthModal from "./AuthModal";
+
+// A képek
 import weeklyschedule from "./schedule.jpeg";
 import ingredientbook from "./egg.jpeg";
 import communityhealth from "./community.jpeg";
+
+// Stílusfájl, amiben NINCS max-width. Feltehetően "Home.css"
 import "./Home.css";
 
 type HomeProps = {
@@ -18,17 +22,15 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"register" | "login">("register");
 
-  // Hamburger menü mobilon
+  // Mobil hamburger menü
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Ha nincs bejelentkezve, modált nyitunk regisztrációra
   const checkLoginOrRegister = (callback: () => void) => {
     if (!isLoggedIn) {
-      // Nyitjuk a regisztrációs popupot
       setActiveTab("register");
       setIsModalOpen(true);
     } else {
-      // Ha be van jelentkezve, mehet a callback (navigate pl.)
       callback();
     }
   };
@@ -45,27 +47,18 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <div className="home-container">
-      {/* ======== Felső menüsor / HEADER ======== */}
+      {/* ======== HEADER ======== */}
       <header className="home-header">
         <div className="header-inner">
           <div className="logo">TestreSzabva</div>
           <nav className={`header-links ${isMobileMenuOpen ? "open" : ""}`}>
-            <a
-              href="#heti-etrend"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a href="#heti-etrend" onClick={() => setIsMobileMenuOpen(false)}>
               Heti Étrend
             </a>
-            <a
-              href="#receptek"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a href="#receptek" onClick={() => setIsMobileMenuOpen(false)}>
               Receptek
             </a>
-            <a
-              href="#kapcsolat"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a href="#kapcsolat" onClick={() => setIsMobileMenuOpen(false)}>
               Kapcsolat
             </a>
             <button
@@ -99,7 +92,7 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </header>
 
-      {/* ======== HERO Szekció ======== */}
+      {/* ======== HERO ======== */}
       <section className="hero-section">
         <div className="hero-content">
           <div className="hero-text">
@@ -117,13 +110,14 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             <div className="image-placeholder">Kép helye</div>
           </div>
         </div>
+        {/* Hullámos elem a hero alján */}
+        <div className="wave-bottom"></div>
       </section>
 
-      {/* ======== Hogyan működik? (3 gombbal) ======== */}
+      {/* ======== Hogyan működik? ======== */}
       <section className="how-section" id="heti-etrend">
         <h2>Hogyan működik a TestreSzabva?</h2>
         <div className="steps-grid">
-          {/* 1. Kérdőív kitöltése */}
           <div className="step-card">
             <div className="step-number">1</div>
             <h3>Töltsd ki a kérdőívet</h3>
@@ -133,33 +127,27 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             </p>
             <button
               className="step-button"
-              onClick={() =>
-                checkLoginOrRegister(() => navigate("/onboarding"))
-              }
+              onClick={() => checkLoginOrRegister(() => navigate("/onboarding"))}
             >
               Kérdőív kitöltése
             </button>
           </div>
 
-          {/* 2. Menü összeállítás */}
           <div className="step-card">
             <div className="step-number">2</div>
             <h3>Állítsd össze a menüdet</h3>
             <p>
-              Válogass a különböző receptekből, és generálj bevásárlólistát, hogy
-              mindig tudd, mit kell venned.
+              Válogass a különböző receptekből, és generálj bevásárlólistát,
+              hogy mindig tudd, mit kell venned.
             </p>
             <button
               className="step-button"
-              onClick={() =>
-                checkLoginOrRegister(() => navigate("/weekly-menu"))
-              }
+              onClick={() => checkLoginOrRegister(() => navigate("/weekly-menu"))}
             >
               Menü összeállítás
             </button>
           </div>
 
-          {/* 3. Haladás követése */}
           <div className="step-card">
             <div className="step-number">3</div>
             <h3>Kövesd a haladást</h3>
@@ -169,9 +157,7 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             </p>
             <button
               className="step-button"
-              onClick={() =>
-                checkLoginOrRegister(() => navigate("/progress"))
-              }
+              onClick={() => checkLoginOrRegister(() => navigate("/progress"))}
             >
               Haladás követése
             </button>
@@ -179,13 +165,17 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </section>
 
-      {/* ======= A megadott snippet a features-section-höz (3 kép) ======= */}
+      {/* ======== Fő funkciók (3 kép) ======== */}
       <section className="features-section" id="receptek">
         <h2>A TestreSzabva fő funkciói</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-image">
-              <img src={weeklyschedule} alt="Heti Étrend" className="feature-image" />
+              <img
+                src={weeklyschedule}
+                alt="Heti Étrend"
+                className="feature-image"
+              />
             </div>
             <h3>Személyre szabott heti menü</h3>
             <p>
@@ -195,7 +185,11 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
           </div>
           <div className="feature-card">
             <div className="feature-image">
-              <img src={ingredientbook} alt="Receptgyűjtemény" className="feature-image" />
+              <img
+                src={ingredientbook}
+                alt="Receptgyűjtemény"
+                className="feature-image"
+              />
             </div>
             <h3>Receptgyűjtemény</h3>
             <p>
@@ -205,7 +199,11 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
           </div>
           <div className="feature-card">
             <div className="feature-image">
-              <img src={communityhealth} alt="Közösség" className="feature-image" />
+              <img
+                src={communityhealth}
+                alt="Közösség"
+                className="feature-image"
+              />
             </div>
             <h3>Aktív közösség</h3>
             <p>
@@ -216,8 +214,46 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </section>
 
-      {/* ======== Egyéb szekciók, pl. Vélemények, Előnyök, CTA ======== */}
-      {/* ... (maradnak a korábbi kódod szerint) ... */}
+      {/* ======== Vélemények (új) ======== */}
+      <section className="testimonials-section">
+        <h2>Vélemények</h2>
+        <div className="testimonials-grid">
+          <div className="testimonial-card">
+            <p className="testimonial-text">
+              „A TestreSzabva heti menüjével végre sikerült úgy diétáznom, hogy
+              közben finomakat eszem és nem éhezem!”
+            </p>
+            <p className="testimonial-author">– Mariann, 29 éves</p>
+          </div>
+          <div className="testimonial-card">
+            <p className="testimonial-text">
+              „Nekem a receptek adtak hatalmas segítséget. Egyszerűen
+              elkészíthető, egészséges ételek – imádom!”
+            </p>
+            <p className="testimonial-author">– Balázs, 34 éves</p>
+          </div>
+          <div className="testimonial-card">
+            <p className="testimonial-text">
+              „Közösség és motiváció – ezekre volt a legnagyobb szükségem, és a
+              TestreSzabva mindenben támogatott.”
+            </p>
+            <p className="testimonial-author">– Anikó, 42 éves</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ======== CTA, csatlakozz most! (új) ======== */}
+      <section className="cta-join-section" id="kapcsolat">
+        <h2>Csatlakozz a TestreSzabvához még ma!</h2>
+        <p>
+          Lépj kapcsolatba velünk, vagy regisztrálj és alakítsd ki a saját
+          egészséges életmódodat. Nem vagy egyedül: itt a támogatás minden
+          lépésnél!
+        </p>
+        <button className="cta-button" onClick={openRegister}>
+          Ingyenes regisztráció
+        </button>
+      </section>
 
       {/* ======== FOOTER ======== */}
       <footer className="home-footer">
@@ -226,7 +262,7 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </footer>
 
-      {/* ======== AuthModal ======== */}
+      {/* ======== AuthModal (Bejelentkezés / Regisztráció) ======== */}
       {isModalOpen && (
         <AuthModal
           activeTab={activeTab}

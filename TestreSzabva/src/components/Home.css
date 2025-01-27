@@ -108,9 +108,9 @@
     overflow: hidden;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
-    /* Egy kis lágy hullámos hatás a hero alján: */
   }
   
+
   @keyframes gradientMove {
     0% {
       background-position: 0% 50%;
@@ -124,7 +124,6 @@
   }
   
   .hero-content {
-    max-width: 1600px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -213,7 +212,6 @@
   }
   
   .steps-grid {
-    max-width: 1600px;
     margin: 0 auto;
     display: grid;
     gap: 30px;
@@ -277,7 +275,6 @@
   }
   
   .features-grid {
-    max-width: 1600px;
     margin: 0 auto;
     display: grid;
     gap: 20px;
@@ -321,25 +318,17 @@
     color: #555;
   }
   
-  /* ======== Vélemények ======== */
   .testimonials-section {
-    width: 100%;
     padding: 40px 20px;
     background-color: #fafafa;
     text-align: center;
   }
   
-  .testimonials-section h2 {
-    margin-bottom: 24px;
-    color: #333;
-  }
-  
   .testimonials-grid {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: 20px;
   }
   
   .testimonial-card {
@@ -348,18 +337,17 @@
     padding: 20px;
     text-align: left;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s;
   }
   
   .testimonial-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
   }
   
   .testimonial-text {
     font-style: italic;
-    color: #555;
     margin-bottom: 12px;
+    color: #444;
   }
   
   .testimonial-author {
@@ -367,6 +355,7 @@
     font-size: 14px;
     color: #999;
   }
+  
   
   /* ======== Előnyök ======== */
   .benefits-section {
@@ -403,20 +392,25 @@
     left: 0;
   }
   
-  /* ======== CTA (Kapcsolat) ======== */
-  .cta-section {
+  .cta-join-section {
     width: 100%;
-    padding: 40px 20px;
-    background-color: #fafafa;
+    position: relative;
+    background: linear-gradient(120deg, #ffe5ef, #fbc9dd, #e30b5c);
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease infinite;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    overflow: hidden;
     text-align: center;
   }
   
-  .cta-section h2 {
+  .cta-join-section h2 {
+    color: #e30b5c;
     margin-bottom: 16px;
-    color: #333;
+
   }
   
-  .cta-section p {
+  .cta-join-section p {
     margin-bottom: 24px;
     color: #555;
   }
@@ -433,7 +427,6 @@
   }
   
   .footer-content {
-    max-width: 1600px;
     margin: 0 auto;
   }
   
@@ -442,29 +435,6 @@
     color: #777;
   }
   
-  /* =========================================
-     ============ MEDIA QUERIES =============
-     ========================================= */
-  
-  /* Nagyobb desktop (min-width: 1601px) */
-  @media (min-width: 1601px) {
-    .hero-text h1 {
-      font-size: 2.6rem;
-    }
-  }
-  
-  /* Tablet (max-width: 992px) */
-  @media (max-width: 992px) {
-    .features-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-    .testimonials-grid {
-      grid-template-columns: 1fr;
-    }
-    .steps-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
   
   /* Telefon (max-width: 768px) */
   @media (max-width: 768px) {
