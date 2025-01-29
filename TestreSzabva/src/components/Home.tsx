@@ -62,7 +62,7 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
               Receptek
             </a>
             <a href="#kapcsolat" onClick={() => setIsMobileMenuOpen(false)}>
-              Kapcsolat
+              Vélemények
             </a>
             <button
               className="header-button outline"

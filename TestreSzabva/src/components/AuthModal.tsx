@@ -67,9 +67,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
                     onSuccess={handleLoginSuccess}
                     onError={handleLoginFailure}
                   />
-                  <button className="social-button facebook">
-                    Folytatás Facebook-al
-                  </button>
+                  
                 </div>
                 <p className="separator">vagy lépj be e-mail címmel</p>
 
@@ -104,9 +102,6 @@ const AuthModal: React.FC<AuthModalProps> = ({
                     onSuccess={handleLoginSuccess}
                     onError={handleLoginFailure}
                   />
-                  <button className="social-button facebook">
-                    Folytatás Facebook-al
-                  </button>
                 </div>
                 <p className="separator">vagy lépj be e-mail címmel</p>
 

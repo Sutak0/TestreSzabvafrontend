@@ -156,14 +156,6 @@
     background-color: #f3f3f3;
   }
   
-  .social-button.facebook {
-    background-color: #4267B2;
-    color: #fff;
-  }
-  
-  .social-button.facebook:hover {
-    background-color: #365899;
-  }
   
   /* Vagy e-mail címmel */
   .separator {

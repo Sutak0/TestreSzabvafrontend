@@ -1,6 +1,7 @@
 
 body, html {
   overflow-x: hidden; 
+  scroll-behavior: smooth;
 }
 
 .home-container {
@@ -360,41 +361,7 @@ body, html {
     color: #999;
   }
   
-  
-  /* ======== Előnyök ======== */
-  .benefits-section {
-    width: 100%;
-    padding: 40px 20px;
-    text-align: center;
-    background-color: #fff;
-  }
-  
-  .benefits-section h2 {
-    margin-bottom: 24px;
-    color: #333;
-  }
-  
-  .benefits-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto 24px;
-    max-width: 600px;
-    text-align: left;
-  }
-  
-  .benefits-section li {
-    margin: 12px 0;
-    color: #555;
-    padding-left: 24px;
-    position: relative;
-  }
-  
-  .benefits-section li::before {
-    content: "•";
-    color: #e30b5c;
-    position: absolute;
-    left: 0;
-  }
+
   
   .cta-join-section {
     width: 100%;
@@ -453,9 +420,6 @@ body, html {
     
   }
 
-  @keyframes pulse{
-
-  }
   
 
   /* Telefon (max-width: 768px) */
