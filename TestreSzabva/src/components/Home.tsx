@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthModal from "./AuthModal";
 
-// A képek
+// Képeket megtartjuk
 import weeklyschedule from "./schedule.jpeg";
 import ingredientbook from "./egg.jpeg";
 import communityhealth from "./community.jpeg";
 
-// Stílusfájl, amiben NINCS max-width. Feltehetően "Home.css"
+// A CSS-ben NINCS max-width, 
+// és figyelünk, hogy ne lógjunk túl horizontálisan.
 import "./Home.css";
 
 type HomeProps = {
@@ -18,14 +19,14 @@ type HomeProps = {
 const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
 
-  // Popup state
+  // AuthModal megnyitás
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"register" | "login">("register");
 
-  // Mobil hamburger menü
+  // Mobilmenü
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Ha nincs bejelentkezve, modált nyitunk regisztrációra
+  // Ha nincs bejelentkezve, modált nyitunk
   const checkLoginOrRegister = (callback: () => void) => {
     if (!isLoggedIn) {
       setActiveTab("register");
@@ -47,10 +48,12 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <div className="home-container">
-      {/* ======== HEADER ======== */}
+      {/* ===== HEADER ===== */}
       <header className="home-header">
         <div className="header-inner">
-          <div className="logo">TestreSzabva</div>
+          {/* Animált logó */}
+          <div className="logo animated-logo">TestreSzabva</div>
+
           <nav className={`header-links ${isMobileMenuOpen ? "open" : ""}`}>
             <a href="#heti-etrend" onClick={() => setIsMobileMenuOpen(false)}>
               Heti Étrend
@@ -80,6 +83,7 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
               Bejelentkezés
             </button>
           </nav>
+
           {/* Hamburger ikon mobilon */}
           <div
             className="hamburger"
@@ -92,7 +96,7 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </header>
 
-      {/* ======== HERO ======== */}
+      {/* ===== HERO ===== */}
       <section className="hero-section">
         <div className="hero-content">
           <div className="hero-text">
@@ -110,11 +114,9 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             <div className="image-placeholder">Kép helye</div>
           </div>
         </div>
-        {/* Hullámos elem a hero alján */}
-        <div className="wave-bottom"></div>
       </section>
 
-      {/* ======== Hogyan működik? ======== */}
+      {/* ===== Hogyan működik? ===== */}
       <section className="how-section" id="heti-etrend">
         <h2>Hogyan működik a TestreSzabva?</h2>
         <div className="steps-grid">
@@ -137,8 +139,8 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             <div className="step-number">2</div>
             <h3>Állítsd össze a menüdet</h3>
             <p>
-              Válogass a különböző receptekből, és generálj bevásárlólistát,
-              hogy mindig tudd, mit kell venned.
+              Válogass a különböző receptekből, és generálj bevásárlólistát, hogy
+              mindig tudd, mit kell venned.
             </p>
             <button
               className="step-button"
@@ -165,7 +167,7 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </section>
 
-      {/* ======== Fő funkciók (3 kép) ======== */}
+      {/* ===== Fő funkciók (3 kép) ===== */}
       <section className="features-section" id="receptek">
         <h2>A TestreSzabva fő funkciói</h2>
         <div className="features-grid">
@@ -214,7 +216,6 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </section>
 
-      {/* ======== Vélemények (új) ======== */}
       <section className="testimonials-section">
         <h2>Vélemények</h2>
         <div className="testimonials-grid">
@@ -255,14 +256,14 @@ const Home: React.FC<HomeProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </button>
       </section>
 
-      {/* ======== FOOTER ======== */}
-      <footer className="home-footer">
+      {/* ===== FOOTER ===== */}
+      <footer className="home-footer" id="kapcsolat">
         <div className="footer-content">
           <p>© 2025 TestreSzabva – Minden jog fenntartva.</p>
         </div>
       </footer>
 
-      {/* ======== AuthModal (Bejelentkezés / Regisztráció) ======== */}
+      {/* ===== AuthModal ===== */}
       {isModalOpen && (
         <AuthModal
           activeTab={activeTab}
